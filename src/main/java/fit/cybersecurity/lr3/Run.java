@@ -3,67 +3,54 @@ package fit.cybersecurity.lr3;
 import fit.cybersecurity.lr3.controller.*;
 import fit.cybersecurity.lr3.model.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Run {
     public static void main(String[] args) {
         University university = createTypicalUniversity();
-        System.out.println(university);
     }
 
     public static University createTypicalUniversity() {
-        Student student_1 = StudentCreator.create("Петро", "Шевченко", "Олександрович", Sex.MALE);
-        Student student_2 = StudentCreator.create("Марія", "Коваленко", "Іванівна", Sex.FEMALE);
-        Student student_3 = StudentCreator.create("Олег", "Мельник", "Васильович", Sex.MALE);
-        Student student_4 = StudentCreator.create("Наталія", "Бойко", "Юріївна", Sex.FEMALE);
-        Student student_5 = StudentCreator.create("Андрій", "Захарчук", "Миколайович", Sex.MALE);
+        Human typicalHuman = HumanCreator.createHuman("Петро ", "Шевченко", "Олександрович", Sex.MALE);
+        Human typicalHuman1 = HumanCreator.createHuman("Марія", "Коваленко", "Іванівна", Sex.FEMALE);
+        Human typicalHuman3 = HumanCreator.createHuman("Олег", "Мельник", "Васильович", Sex.MALE);
+        Human typicalHuman4 = HumanCreator.createHuman("Наталія", "Бойко", "Юріївна", Sex.FEMALE);
+        Human typicalHuman5 = HumanCreator.createHuman("Андрій", "Захарчук", "Миколайович", Sex.MALE);
+        Student typicalStudent1 = StudentCreator.createStudent(typicalHuman, 1);
+        Student typicalStudent2 = StudentCreator.createStudent(typicalHuman1, 2);
+        Student typicalStudent3 = StudentCreator.createStudent(typicalHuman3, 3);
+        Student typicalStudent4 = StudentCreator.createStudent(typicalHuman4, 4);
+        Student typicalStudent5 = StudentCreator.createStudent(typicalHuman5, 5);
+        Student[] students = {typicalStudent1, typicalStudent2, typicalStudent3, typicalStudent4, typicalStudent5};
 
-        List<Student> students = new ArrayList<>();
-        students.add(student_1);
-        students.add(student_2);
-        students.add(student_3);
-        students.add(student_4);
-        students.add(student_5);
-        Group group = GroupCreator.create(
+        Human groupHead = HumanCreator.createHuman("Вікторія", "Сидоренко", "Петрівна", Sex.FEMALE);
+        Group group = GroupCreator.createGroup(
                 "125-20-3",
-                "Вікторія",
-                "Сидоренко",
-                "Петрівна",
-                Sex.FEMALE,
+                groupHead,
                 students
         );
+        Group[] groups = {group};
 
-        List<Group> groups = new ArrayList<>();
-        Department department = DepartmentCreator.create(
+        Human departmentHead = HumanCreator.createHuman("Ігор", "Кравчук", "Ярославович", Sex.MALE);
+        Department department = DepartmentCreator.createDepartment(
                 "БІТ",
-                "Ігор",
-                "Кравчук",
-                "Ярославович",
-                Sex.MALE,
+                departmentHead,
                 groups
         );
+        Department[] departments = {department};
 
-        List<Department> departments = new ArrayList<>();
-        Faculty faculty = FacultyCreator.create(
+        Human facultyHead = HumanCreator.createHuman("Юлія", "Романенко", "Сергіївна", Sex.FEMALE);
+        Faculty faculty = FacultyCreator.createFaculty(
                 "ФІТ",
-                "Юлія",
-                "Романенко",
-                "Сергіївна",
-                Sex.FEMALE,
+                facultyHead,
                 departments
         );
+        Faculty[] faculties = {faculty};
 
-        List<Faculty> faculties = new ArrayList<>();
-        University university = UniversityCreator.create(
+        Human universityHead = HumanCreator.createHuman("Володимир", "Литвин", "Дмитрович", Sex.MALE);
+        University university = UniversityCreator.createUniversity(
                 "НТУДП",
-                "Володимир",
-                "Литвин",
-                "Дмитрович",
-                Sex.MALE,
+                universityHead,
                 faculties
         );
-
         return university;
     }
 }

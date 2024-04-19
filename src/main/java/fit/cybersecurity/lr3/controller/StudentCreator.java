@@ -1,15 +1,16 @@
 package fit.cybersecurity.lr3.controller;
 
-import fit.cybersecurity.lr3.model.Sex;
+import fit.cybersecurity.lr3.model.Human;
 import fit.cybersecurity.lr3.model.Student;
 
-public abstract class StudentCreator {
-    public static Student create(String name, String surname, String patronymic, Sex sex) {
-        return new Student(
-                name,
-                surname,
-                patronymic,
-                sex
-        );
+public class StudentCreator {
+    public static Student createStudent(Human human, int studentID) {
+        Student student = new Student();
+        student.getStudentID(studentID);
+        student.setName(human.getName());
+        student.setSurname(human.getSurname());
+        student.setPatronymic(human.getPatronymic());
+        student.setSex(human.getSex());
+        return student;
     }
 }

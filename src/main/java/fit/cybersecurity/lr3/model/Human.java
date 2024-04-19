@@ -6,13 +6,6 @@ public class Human {
     protected String patronymic;
     protected Sex sex;
 
-    public Human(String name, String surname, String patronymic, Sex sex) {
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.sex = sex;
-    }
-
     public String getName() {
         return name;
     }
